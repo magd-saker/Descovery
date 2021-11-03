@@ -1,0 +1,36 @@
+spring:
+ profiles: zone1
+eureka:
+ instance:
+   metadataMap:
+     zone: zone1
+ client:
+   serviceUrl:
+     defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+server:
+ port: ${PORT:8081}
+---
+spring:
+ profiles: zone2
+eureka:
+ instance:
+   metadataMap:
+     zone: zone2
+ client:
+   serviceUrl:
+     defaultZone: http://localhost:8762/eureka/,http://localhost:8761/eureka/,http://localhost:8763/eureka/
+server:
+ port: ${PORT:8082}
+---
+spring:
+ profiles: zone3
+eureka:
+ instance:
+   metadataMap:
+     zone: zone3
+ client:
+   serviceUrl:
+     defaultZone: http://localhost:8763/eureka/,http://localhost:8761/eureka/,http://localhost:8762/eureka/
+server:
+ port: ${PORT:8083}
+
